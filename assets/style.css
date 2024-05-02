@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Titillium Web;
+  color: #f1f1f1;
+}
+
+img {
+  display: block;
+}
+
+body {
+  background-color: rgb(20, 28, 47);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100svh;
+}
+body .devfinder-wrapper {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+body .devfinder-wrapper header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1em;
+}
+body .devfinder-wrapper header .logo {
+  font-weight: 600;
+  font-size: 1.8em;
+}
+body .devfinder-wrapper header .theme {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+body .devfinder-wrapper header .theme span {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  font-size: 0.8em;
+}
+body .devfinder-wrapper header .theme .fi {
+  display: flex;
+}
+body .devfinder-wrapper .search {
+  background-color: rgb(38, 49, 80);
+  border-radius: 0.7em;
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  padding: 0.5666666667em 1.7em;
+  padding-right: 0.5666666667em;
+}
+body .devfinder-wrapper .search .search-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+body .devfinder-wrapper .search .search-input .search-icon {
+  color: rgb(0, 121, 254);
+  margin-right: 0.7em;
+}
+body .devfinder-wrapper .search .search-input input {
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+}
+body .devfinder-wrapper .search .search-input input::-moz-placeholder {
+  color: #f1f1f1;
+}
+body .devfinder-wrapper .search .search-input input::placeholder {
+  color: #f1f1f1;
+}
+body .devfinder-wrapper .search .search-input input:focus {
+  outline: none;
+}
+body .devfinder-wrapper .search #search-btn {
+  background-color: rgb(0, 121, 254);
+  border: 0;
+  padding: 0.68em 1.7em;
+  border-radius: 0.7em;
+  font-weight: 600;
+}/*# sourceMappingURL=style.css.map */
