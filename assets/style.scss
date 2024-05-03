@@ -3,12 +3,14 @@ $primary-color: rgb(38, 49, 80);
 $white-color: #f1f1f1;
 $link-color: rgb(0 121 254);
 $b-radius: .7em;
-$default-padding: 1.7em;
+$default-padding: 2.3em;
+$spacing: 1.5em;
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Titillium Web;
+    font-weight: 300;
     color: $white-color;
 }
 
@@ -24,7 +26,7 @@ body{
     align-items: center;
     height: 100svh;
     .devfinder-wrapper{
-        width: 600px;
+        width: min(600px, 90%);
         display: flex;
         flex-direction: column;
         gap: 1em;
@@ -55,10 +57,11 @@ body{
             background-color: $primary-color;
             border-radius: $b-radius;
             display: flex;
+            align-items: center;
             gap: 1em;
             justify-content: space-between;
-            padding: calc($default-padding / 3) $default-padding;
-            padding-right: calc($default-padding/3);
+            padding: calc($default-padding / 6) calc($default-padding / 2);
+            padding-right: calc($default-padding/6);
             .search-input{
                 width: 100%;
                 display: flex;
@@ -82,9 +85,71 @@ body{
             #search-btn{
                 background-color: $link-color;
                 border: 0;
-                padding: calc($default-padding/2.5) $default-padding;
+                padding: calc($default-padding/3) calc($default-padding/1.5);
                 border-radius: $b-radius;
                 font-weight: 600;
+            }
+        }
+        .profile-wrapper{
+            background-color: $primary-color;
+            border-radius: $b-radius;
+            padding: $default-padding;
+            display: flex;
+            gap: $spacing;
+
+            .avatar{
+                width: 28%;
+                img{
+                    width: 100%;
+                    min-width: 70px;
+                    border-radius: 1000px;
+                }
+            }
+
+            .profile-info{
+                display: flex;
+                flex-direction: column;
+                gap: $spacing;
+                width: 100%;;
+                .identifier{
+                    display: flex;
+                    justify-content: space-between;
+                    .username-wrapper{
+                        display: flex;
+                        flex-direction: column;
+                        .name{
+                            font-weight: 600;
+                            font-size: 1.7em;
+                            letter-spacing: .03em;
+                            line-height: 1;
+                        }
+                        .user{
+                            color: $link-color;
+                        }
+                    }
+                }
+                .bio{
+                    p{
+                        color: #ccc;
+                    }
+                }
+                .user-info{
+                    background-color: $bkg-color;
+                    padding: calc($default-padding/2) $default-padding;
+                    border-radius: $b-radius;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 3em;
+                    div{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        .info-data{
+                            font-weight: 700;
+                            font-size: 1.1em;
+                        }
+                    }
+                }
             }
         }
     }
