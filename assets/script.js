@@ -5,9 +5,9 @@ const wrapper = document.querySelector(".profile-wrapper");
 function getApi(username){
     return(fetch(`https://api.github.com/users/${username}`).then(async result =>{
         if(!result.ok){
+            wrapper.dataset.isloading = "no"
             throw new Error(result.status);
         }
-        wrapper.dataset.isloading = "yes";
         var data = await result.json();
 
         setTimeout(function(){
@@ -20,7 +20,8 @@ function getApi(username){
 
 searchBtn.addEventListener("click", async ()=>{
     const username = searchResult.value;
-    // wrapper.dataset.isloading = "yes";
+    wrapper.dataset.isloading = "yes";
+    
     let data = await getApi(username);
     wrapper.innerHTML = `
     <div class="profile-info">
@@ -84,9 +85,6 @@ searchBtn.addEventListener("click", async ()=>{
     </div>
     `
     wrapper.dataset.iscalled = "yes";
-    // setTimeout(function(){
-    //     wrapper.dataset.isloading = "no";
-    // },500)
 })
 
 
