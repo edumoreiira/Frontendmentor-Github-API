@@ -11,6 +11,11 @@ img {
   display: block;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 body {
   background-color: rgb(20, 28, 47);
   display: flex;
@@ -86,29 +91,38 @@ body .devfinder-wrapper .search #search-btn {
   padding: 0.7666666667em 1.5333333333em;
   border-radius: 0.7em;
   font-weight: 600;
+  transition: all 150ms ease-in-out;
+}
+body .devfinder-wrapper .search #search-btn:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
 }
 body .devfinder-wrapper .profile-wrapper {
   background-color: rgb(38, 49, 80);
   border-radius: 0.7em;
   padding: 2.3em;
-  display: flex;
   gap: 1.5em;
-}
-body .devfinder-wrapper .profile-wrapper .avatar {
-  width: 28%;
-}
-body .devfinder-wrapper .profile-wrapper .avatar img {
-  width: 100%;
-  min-width: 70px;
-  border-radius: 1000px;
 }
 body .devfinder-wrapper .profile-wrapper .profile-info {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1.5em;
-  width: 100%;
+  grid-auto-columns: 1fr 1.5fr 1.5fr;
+  grid-template-areas: "a b b" "a c c" "a d d" "a e e";
+}
+@media (max-width: 605px) {
+  body .devfinder-wrapper .profile-wrapper .profile-info {
+    grid-template-areas: "a b b" "c c c" "d d d" "e e e";
+  }
+}
+body .devfinder-wrapper .profile-wrapper .profile-info .avatar {
+  grid-area: a;
+}
+body .devfinder-wrapper .profile-wrapper .profile-info .avatar img {
+  border-radius: 100vh;
+  max-width: 100%;
 }
 body .devfinder-wrapper .profile-wrapper .profile-info .identifier {
+  grid-area: b;
   display: flex;
   justify-content: space-between;
 }
@@ -125,16 +139,19 @@ body .devfinder-wrapper .profile-wrapper .profile-info .identifier .username-wra
 body .devfinder-wrapper .profile-wrapper .profile-info .identifier .username-wrapper .user {
   color: rgb(0, 121, 254);
 }
+body .devfinder-wrapper .profile-wrapper .profile-info .bio {
+  grid-area: c;
+}
 body .devfinder-wrapper .profile-wrapper .profile-info .bio p {
   color: #ccc;
 }
 body .devfinder-wrapper .profile-wrapper .profile-info .user-info {
+  grid-area: d;
   background-color: rgb(20, 28, 47);
   padding: 1.15em 2.3em;
   border-radius: 0.7em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3em;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(4em, 1fr));
 }
 body .devfinder-wrapper .profile-wrapper .profile-info .user-info div {
   display: flex;
@@ -144,4 +161,13 @@ body .devfinder-wrapper .profile-wrapper .profile-info .user-info div {
 body .devfinder-wrapper .profile-wrapper .profile-info .user-info div .info-data {
   font-weight: 700;
   font-size: 1.1em;
+}
+body .devfinder-wrapper .profile-wrapper .profile-info .social-info {
+  grid-area: e;
+  display: grid;
+  row-gap: 0.75em;
+  grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+}
+body .devfinder-wrapper .profile-wrapper .profile-info .social-info div i {
+  margin-right: 0.5em;
 }/*# sourceMappingURL=style.css.map */

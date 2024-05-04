@@ -18,6 +18,10 @@ img{
     display: block;
 }
 
+a{
+    color: inherit;
+    text-decoration: none;
+}
 
 body{
     background-color: $bkg-color;
@@ -88,30 +92,45 @@ body{
                 padding: calc($default-padding/3) calc($default-padding/1.5);
                 border-radius: $b-radius;
                 font-weight: 600;
+                transition: all 150ms ease-in-out;
+                &:hover{
+                    cursor: pointer;
+                    filter: brightness(.8);
+                }
             }
         }
         .profile-wrapper{
             background-color: $primary-color;
             border-radius: $b-radius;
             padding: $default-padding;
-            display: flex;
             gap: $spacing;
-
-            .avatar{
-                width: 28%;
-                img{
-                    width: 100%;
-                    min-width: 70px;
-                    border-radius: 1000px;
-                }
-            }
-
             .profile-info{
-                display: flex;
-                flex-direction: column;
+                display: grid;
                 gap: $spacing;
-                width: 100%;;
+                // grid-template-columns: repeat(3, minmax(150px, 1fr));
+                grid-auto-columns: 1fr 1.5fr 1.5fr;
+                grid-template-areas: 
+                'a b b'
+                'a c c'
+                'a d d'
+                'a e e';
+
+                @media (max-width: 605px) {
+                    grid-template-areas: 
+                    'a b b'
+                    'c c c'
+                    'd d d'
+                    'e e e';
+                }
+                .avatar{
+                    grid-area: a;
+                    img{
+                        border-radius: 100vh;
+                        max-width: 100%;
+                    }
+                }
                 .identifier{
+                    grid-area: b;
                     display: flex;
                     justify-content: space-between;
                     .username-wrapper{
@@ -129,17 +148,18 @@ body{
                     }
                 }
                 .bio{
+                    grid-area: c;
                     p{
                         color: #ccc;
                     }
                 }
                 .user-info{
+                    grid-area: d;
                     background-color: $bkg-color;
                     padding: calc($default-padding/2) $default-padding;
                     border-radius: $b-radius;
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 3em;
+                    display: grid;
+                    grid-template-columns: repeat(3, minmax(4em, 1fr));
                     div{
                         display: flex;
                         flex-direction: column;
@@ -148,6 +168,15 @@ body{
                             font-weight: 700;
                             font-size: 1.1em;
                         }
+                    }
+                }
+                .social-info{
+                    grid-area: e;
+                    display: grid;
+                    row-gap: calc($spacing/2);
+                    grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
+                    div i {
+                        margin-right: .5em;
                     }
                 }
             }

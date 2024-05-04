@@ -30,7 +30,7 @@
 
             <div class="search-input">
                 <i class="fi fi-rs-search search-icon"></i>
-                <input type="text" placeholder="Search GitHub username..." name="" id="">       
+                <input type="text" placeholder="Search GitHub username..." name="" id="search-user">       
             </div>
 
             <button id="search-btn">Search</button>
@@ -38,16 +38,16 @@
         </div>
 
         <div class="profile-wrapper">
-            <div class="avatar">
-                <img src="https://avatars.githubusercontent.com/u/96441062?v=4" alt="">
-            </div>
-
             <div class="profile-info">
-
+                <div class="avatar">
+                    <img src="https://avatars.githubusercontent.com/u/96441062?v=4" alt="">
+                </div>
                 <div class="identifier">
                     <div class="username-wrapper">
                         <span class="name">The Octocat</span>
-                        <span class="user">@octocat</span>
+                        <span class="user">
+                            <a href="google.com">@octocat</a>
+                        </span>
                     </div>
                     <span class="join-date">Joined 25 Jan 2011</span>
                 </div>
@@ -93,4 +93,5 @@
         </div>
     </section>
 </body>
+<script src="./assets/script.js"></script>
 </html>
