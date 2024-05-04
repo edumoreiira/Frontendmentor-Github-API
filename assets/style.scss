@@ -177,6 +177,10 @@ body{
                     grid-template-columns: repeat(auto-fit, minmax(9em, 1fr));
                     div i {
                         margin-right: .5em;
+                        color: inherit;
+                    }
+                    div span{
+                        color: inherit;
                     }
                 }
             }

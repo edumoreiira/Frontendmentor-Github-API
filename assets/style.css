@@ -170,4 +170,8 @@ body .devfinder-wrapper .profile-wrapper .profile-info .social-info {
 }
 body .devfinder-wrapper .profile-wrapper .profile-info .social-info div i {
   margin-right: 0.5em;
+  color: inherit;
+}
+body .devfinder-wrapper .profile-wrapper .profile-info .social-info div span {
+  color: inherit;
 }/*# sourceMappingURL=style.css.map */

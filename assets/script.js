@@ -16,58 +16,66 @@ function getApi(username){
 
 searchBtn.addEventListener("click", async ()=>{
     const username = searchResult.value;
-    let data = await getApi("edumoreiira");
+    let data = await getApi(username);
     console.log(data);
     wrapper.innerHTML = `
     <div class="profile-info">
     <div class="avatar">
-        <img src="https://avatars.githubusercontent.com/u/96441062?v=4" alt="">
+        <img src="${data.avatar_url}" alt="">
     </div>
     <div class="identifier">
         <div class="username-wrapper">
-            <span class="name">The Octocat</span>
+            <span class="name">${data.name}</span>
             <span class="user">
-                <a href="google.com">@octocat</a>
+                <a href="${data.html_url}">@${data.login}</a>
             </span>
         </div>
-        <span class="join-date">Joined 25 Jan 2011</span>
+        <span class="join-date">Joined ${Intl.DateTimeFormat('en-US',{dateStyle: "medium"}).format(new Date(data.created_at))}</span>
     </div>
     
     <div class="bio">
-        <p>This profile has no bio</p>
+        ${data.bio ? `<p style="color:#f1f1f1 !important;">${data.bio}</p>` :
+        `<p style="color: gray !important;">This profile has no bio</p>`}
     </div>
 
     <div class="user-info">
         <div class="repos">
             <span class="info-title repos-title">Repos</span>
-            <span class="info-data repos-info">8</span>
+            <span class="info-data repos-info">${data.public_repos}</span>
         </div>
         <div class="followers">
             <span class="info-title followers-title">Followers</span>
-            <span class="info-data followers-info">3938</span>
+            <span class="info-data followers-info">${data.followers}</span>
         </div>
         <div class="following">
             <div class="info-title following-title">Following</div>
-            <span class="info-data following-info">9</span>
+            <span class="info-data following-info">${data.following}</span>
         </div>
     </div>
     
     <div class="social-info">
+        ${data.location ? `
         <div class="location">
             <i class="fi fi-sr-marker"></i>
-            <span>San Francisco</span>
-        </div>
-        <div class="twitter">
+            <span>${data.location}</span>
+        </div>`
+        :
+        `<div class="location" style="color: gray !important;">
+        <i class="fi fi-sr-marker"></i>
+        <span>Not Available</span>
+        </div>`}
+
+        <div class="twitter" ${data.twitter_username ? "" : 'style="color: gray;"'}>
             <i class="fi fi-brands-twitter"></i>
-            <span>Not Available</span>
+            <span>${data.twitter_username ? data.twitter_username : "Not Available"}</span>
         </div>
-        <div class="github-link">
+        <div class="github-link" ${data.blog ? "" : 'style="color: gray;"'}>
             <i class="fi fi-br-link-alt"></i>
-            <span><a>https://github.blog</a></span>
+            <span><a>${data.blog == "" ? "Not Available" : data.blog}</a></span>
         </div>
-        <div class="enterprise">
+        <div class="enterprise" ${data.company ? "" : 'style="color: gray;"'}>
             <i class="fi fi-ss-building"></i>
-            <span>agithub</span>
+            <span>${data.company ? data.company : "Not Available"}</span>
         </div>
     </div>
     `
