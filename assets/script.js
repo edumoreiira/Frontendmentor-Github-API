@@ -7,17 +7,21 @@ function getApi(username){
         if(!result.ok){
             throw new Error(result.status);
         }
-
+        wrapper.dataset.isloading = "yes";
         var data = await result.json();
-        console.log(data)
+
+        setTimeout(function(){
+            wrapper.dataset.isloading = "no";
+        },100)
+
         return await data;
     }))
 }
 
 searchBtn.addEventListener("click", async ()=>{
     const username = searchResult.value;
+    // wrapper.dataset.isloading = "yes";
     let data = await getApi(username);
-    console.log(data);
     wrapper.innerHTML = `
     <div class="profile-info">
     <div class="avatar">
@@ -25,7 +29,7 @@ searchBtn.addEventListener("click", async ()=>{
     </div>
     <div class="identifier">
         <div class="username-wrapper">
-            <span class="name">${data.name}</span>
+            <span class="name">${data.name ? data.name : data.login}</span>
             <span class="user">
                 <a href="${data.html_url}">@${data.login}</a>
             </span>
@@ -79,6 +83,10 @@ searchBtn.addEventListener("click", async ()=>{
         </div>
     </div>
     `
+    wrapper.dataset.iscalled = "yes";
+    // setTimeout(function(){
+    //     wrapper.dataset.isloading = "no";
+    // },500)
 })
 
 
